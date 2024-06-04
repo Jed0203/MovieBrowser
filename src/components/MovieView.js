@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const MovieView = () => {
   const { id } = useParams();
   const location = useLocation();
-  const { posterUrl: passedPosterUrl, placeholderImage } = location.state || {};
+  const { posterUrl, placeholderImage } = location.state || {};
   const [movieDetails, setMovieDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +25,7 @@ const MovieView = () => {
       return <Hero text="Loading..." />;
     }
     if (movieDetails) {
-      const posterPath = passedPosterUrl || placeholderImage;
+      //const posterPath = passedPosterUrl || placeholderImage;
       const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`
       return (
         <>
@@ -34,7 +34,7 @@ const MovieView = () => {
             <div className="row">
               <div className="col-md-3">
                 <img
-                  src={posterPath}
+                  src={posterUrl || placeholderImage}
                   alt="..."
                   className="img-fluid shadow rounded"
                 />

@@ -1,32 +1,47 @@
+import { useEffect, useState } from "react";
 import Hero from "./Hero";
+import MovieCard from "./MovieCard";
 
 const Home = () => {
+  const [movies, setMovies] = useState(null);
+  const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+  // const detailUrl = `/movies/${movie.id}`
+  useEffect(() => {
+    async function getMovies(){
+      const data = await fetchMoviesData();
+      setMovies(data.results);
+    }
+
+    getMovies();
+  }, []);
+
+  async function fetchMoviesData(){
+    const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNTIyMTQxMjU2ZjJiNThhMDFkMWI2MmMwMjQ3YTI1YyIsInN1YiI6IjY2NWNlODJhMTNjYTU2MGE0YWM4ZWE0MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YU0TJzwmpsYAvaIma6bt9wmB6NlZvgKTg7utnblW1tU'
+      }
+    };
+
+    const response= await fetch(url, options);
+    const json = await response.json();
+    return json;
+  }
   return (
     <>
-      <Hero text="Welcome to React 201" />
+      <Hero text="Now Playing..." />
       <div className="container">
-        <div className="row">
-          <div className="col-lg-8 offset-lg-2 my-5">
-          <h2>React 201 project:</h2>
-              <p className="lead">
-                You will be creating a movie browser that's API driven. There's a search function,
-                movie detail view, about page, all built into a single page application / progressive web application.
-              </p>
-              <p className="lead">
-                There are tasks I have purposely left out of this project for you to solve on your own. This is
-                VERY similar to a take home assignment that a company will give you when you apply to work with
-                them.
-              </p>
-              <p className="lead">
-                Just a few bugs that have not been solved yet:
-              </p>
-              <ul className="lead">
-                <li>There is no 404 page</li>
-                <li>Sometimes a search result doesn't have an image</li>
-                <li>There is no handler if there are no search results</li>
-                <li>The search button in the navigation doesn't work</li>
-              </ul>
-          </div>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+        {movies && movies.map(movie => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              posterUrl={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : placeholderImage}
+              detailUrl={`/movies/${movie.id}`}
+            />
+          ))}
         </div>
       </div>
     </>
