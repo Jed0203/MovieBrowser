@@ -7,6 +7,7 @@ import SearchView from './components/SearchView';
 import MovieView from './components/MovieView';
 import { Switch, Route } from "react-router-dom";
 import NotFound from "./components/NotFound";
+import useFetchMovies from "./hooks/useFetchMovies";
 
 //api_key = 1522141256f2b58a01d1b62c0247a25c
 
@@ -14,6 +15,7 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const {movies, isLoading, fetchMoreMovies} = useFetchMovies();
 
   const handleSearch = (query) => {
     if (query) {
@@ -31,14 +33,15 @@ function App() {
     <div>
       <Navbar setSearchText={setSearchText} onSearch={handleSearch}/>
       <Switch>
+        <Route path="/movies/:id" component={MovieView} />
         <Route path="/" exact>
-          <Home />
+          <Home movies={movies} isLoading={isLoading} fetchMoreMovies={fetchMoreMovies}/>
         </Route>
         <Route path="/about" component={AboutView} />
         <Route path="/search">
           <SearchView keyword={searchText} searchResults={searchResults} />
         </Route>
-        <Route path="/movies/:id" component={MovieView} />
+        
         <Route component={NotFound} />
       </Switch>
     </div>
