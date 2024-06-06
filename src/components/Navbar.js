@@ -17,10 +17,16 @@ const Navbar = ({ setSearchText, onSearch }) => {
     history.push('/search');
   }
 
+  const handleHomeClick = () => {
+    setInputValue(''); // Reset search input value
+    history.push('/');
+  };
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/" onClick={handleHomeClick}>
           Movie Browser
         </Link>
         <button
@@ -37,7 +43,7 @@ const Navbar = ({ setSearchText, onSearch }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link active" aria-current="page" to="/" onClick={handleHomeClick}>
                 Home
               </Link>
             </li>

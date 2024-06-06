@@ -1,19 +1,25 @@
 //import { useState } from "react";
 import Hero from "./Hero";
 import MovieCard from "./MovieCard";
+import Pagination from "./Pagination";
 
-const Home = ({movies, isLoading, fetchMoreMovies}) => {
+const Home = ({movies, isLoading, fetchMoreMovies, page, totalPages}) => {
   
   
   const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+  // Calculate the range of movies to display
+  const moviesPerPage = 12;
+  const startIndex = (page - 1) * moviesPerPage;
+  const endIndex = startIndex + moviesPerPage;
+  const currentMovies = movies.slice(startIndex, endIndex);
 
   
   return (
     <>
       <Hero text="Now Playing..." />
-      <div className="container">
+      <div className="bg-dark">
         <div className="row row-cols-1 row-cols-md-3 g-4">
-          {movies.map((movie) => (
+          {currentMovies.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={movie}
@@ -25,7 +31,11 @@ const Home = ({movies, isLoading, fetchMoreMovies}) => {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          <button className="btn btn-primary btn-lg col-lg-12 col-md-6 col-sm-12" onClick={fetchMoreMovies}>Load More</button>
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            fetchMoreMovies={fetchMoreMovies}
+          />
         )}
       </div>
     </>

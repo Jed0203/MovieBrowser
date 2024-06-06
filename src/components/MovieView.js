@@ -33,10 +33,10 @@ const MovieView = () => {
       const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`
       return (
         <>
-          <Hero text={movieDetails.original_title} backdrop={backdropUrl} />
+          <Hero text={movieDetails.original_title} backdrop={backdropUrl} isMovieViewPage={true}/>
           <div className="container my-5">
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-3 shadow-lg ">
                 <img
                   src={posterUrl || placeholderImage}
                   alt="..."

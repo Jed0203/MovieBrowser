@@ -4,6 +4,7 @@ const useFetchMovies = () => {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+    const [totalPages, setTotalPages] = useState(0);
   
     useEffect(() => {
       async function fetchMoviesData() {
@@ -18,24 +19,30 @@ const useFetchMovies = () => {
   
         const response = await fetch(url, options);
         const data = await response.json();
+        setTotalPages(data.total_pages);
         return data.results;
       }
   
       async function getMovies() {
         setIsLoading(true);
         const moviesData = await fetchMoviesData();
-        setMovies((prevMovies) => [...prevMovies, ...moviesData]);
+        const moviesWithKeys = moviesData.map((movie, index) => ({ ...movie, key: `${movie.id}-${index}` }));
+        setMovies((prevMovies) => [...prevMovies, ...moviesWithKeys]);
         setIsLoading(false);
       }
   
       getMovies();
     }, [page]);
   
-    const fetchMoreMovies = () => {
-      setPage((prevPage) => prevPage + 1);
-    };
+    const fetchMoreMovies = (direction) => {
+        if (direction === 'next' && page < totalPages) {
+          setPage((prevPage) => prevPage + 1);
+        } else if (direction === 'previous' && page > 1) {
+          setPage((prevPage) => prevPage - 1);
+        }
+      };
   
-    return { movies, isLoading, fetchMoreMovies };
+    return { movies, isLoading, fetchMoreMovies, page, totalPages };
   };
 
 export default useFetchMovies;

@@ -1,4 +1,5 @@
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useState } from 'react';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -15,7 +16,7 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const {movies, isLoading, fetchMoreMovies} = useFetchMovies();
+  const {movies, isLoading, fetchMoreMovies, page, totalPages} = useFetchMovies();
 
   const handleSearch = (query) => {
     if (query) {
@@ -33,14 +34,14 @@ function App() {
     <div>
       <Navbar setSearchText={setSearchText} onSearch={handleSearch}/>
       <Switch>
-        <Route path="/movies/:id" component={MovieView} />
         <Route path="/" exact>
-          <Home movies={movies} isLoading={isLoading} fetchMoreMovies={fetchMoreMovies}/>
+          <Home movies={movies} isLoading={isLoading} fetchMoreMovies={fetchMoreMovies} page = {page} totalPages = {totalPages}/>
         </Route>
         <Route path="/about" component={AboutView} />
         <Route path="/search">
           <SearchView keyword={searchText} searchResults={searchResults} />
         </Route>
+        <Route path="/movies/:id" component={MovieView} />
         
         <Route component={NotFound} />
       </Switch>
