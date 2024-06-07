@@ -24,7 +24,7 @@ const Navbar = ({ setSearchText, onSearch }) => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light  sticky-top bg-opacity-75">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/" onClick={handleHomeClick}>
           Movie Browser
@@ -42,9 +42,14 @@ const Navbar = ({ setSearchText, onSearch }) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+          <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/" onClick={handleHomeClick}>
                 Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/trending" >
+                Trending
               </Link>
             </li>
             <li className="nav-item">

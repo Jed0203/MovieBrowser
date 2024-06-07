@@ -8,18 +8,47 @@
     z-index: 200;
 }
 
-.hero-backdrop {
-    position: fixed;
-    top: 56px;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 56px);
-    background-size: cover;
-    background-position: center center;
-    opacity: 0.2;
-    z-index: -1; 
+.movie-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 90%;
+  }
+  
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* .container {
-    background-color: black;
-} */
+
+.movie-view-container {
+    position: relative;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 56px; /* Adjust this value if your navbar height changes */
+}
+
+.movie-view-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1; /* Ensure the overlay is in front of the backdrop */
+}
+.container {
+    position: relative;
+    z-index: 2; /* Ensure the content is in front of the overlay */
+}
+
+.custom-carousel {
+    max-width: 600px; /* Adjust the max width as needed */
+    margin: 0 auto; /* Center the carousel */
+  }
+  
+  .custom-carousel-img {
+    height: 300px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image covers the entire area */
+  }
+  

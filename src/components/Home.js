@@ -1,44 +1,20 @@
-//import { useState } from "react";
-import Hero from "./Hero";
-import MovieCard from "./MovieCard";
-import Pagination from "./Pagination";
+import React from 'react';
+import Hero from './Hero';
+// import SearchBar from './SearchBar';
+import Slideshow from './Slideshow';
 
-const Home = ({movies, isLoading, fetchMoreMovies, page, totalPages}) => {
-  
-  
-  const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
-  // Calculate the range of movies to display
-  const moviesPerPage = 12;
-  const startIndex = (page - 1) * moviesPerPage;
-  const endIndex = startIndex + moviesPerPage;
-  const currentMovies = movies.slice(startIndex, endIndex);
+const Home = ({movies}) => {
 
-  
   return (
-    <>
-      <Hero text="Now Playing..." />
-      <div className="bg-dark">
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {currentMovies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              posterUrl={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : placeholderImage}
-              detailUrl={`/movies/${movie.id}`}
-            />
-          ))}
-        </div>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            fetchMoreMovies={fetchMoreMovies}
-          />
-        )}
+    <div className="home-page">
+      <Hero text="Welcome to Movie Browser" />
+      {/* <div className="search-bar-container">
+        <SearchBar setSearchText={setSearchText} handleSearch={handleSearch} />
+      </div> */}
+      <div className="slideshow-container mt-4">
+        <Slideshow movies={movies} />
       </div>
-    </>
+    </div>
   );
 };
 
