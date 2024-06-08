@@ -1,25 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Slideshow = ({ movies }) => {
   const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
 
+
   return (
     <div id="carouselExampleAutoplaying" className="carousel slide custom-carousel" data-bs-ride="carousel">
       <div className="carousel-inner">
         {movies.map((movie, index) => {
-          const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : placeholderImage;
+          const posterUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : placeholderImage;
+          const detailUrl = `/movies/${movie.id}`
           return (
             <div key={`${movie.id}-${index}`} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-              <img
-                src={posterUrl}
-                className="d-block w-100 custom-carousel-img"
-                alt={movie.title}
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>{movie.title}</h5>
-                <p>{movie.overview}</p>
-              </div>
+                    <img
+                        src={posterUrl}
+                        className="d-block w-100 custom-carousel-img"
+                        alt={movie.title}
+                    />
+
+                        
+                    <div className="carousel-caption position-absolute top-50 start-50 translate-middle fs-4">
+                        <h5>{movie.title}</h5>
+                        <p>{movie.overview}</p>
+                        <Link to={detailUrl} className="btn btn-primary">
+                            More Details
+                        </Link>
+                    </div>
+
             </div>
           );
         })}

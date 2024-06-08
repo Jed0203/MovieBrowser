@@ -49,7 +49,7 @@ const Navbar = ({ setSearchText, onSearch }) => {
             </li>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/trending" >
-                Trending
+                Now Playing
               </Link>
             </li>
             <li className="nav-item">

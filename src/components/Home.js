@@ -6,14 +6,13 @@ import Slideshow from './Slideshow';
 const Home = ({movies}) => {
 
   return (
-    <div className="home-page">
+    <div className="home-page bg-dark">
       <Hero text="Welcome to Movie Browser" />
-      {/* <div className="search-bar-container">
-        <SearchBar setSearchText={setSearchText} handleSearch={handleSearch} />
-      </div> */}
-      <div className="slideshow-container mt-4">
-        <Slideshow movies={movies} />
-      </div>
+      {
+        movies && movies.length>0 && <Slideshow movies={movies} />
+      }
+      
+
     </div>
   );
 };

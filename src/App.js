@@ -1,5 +1,6 @@
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useState } from 'react';
 import Navbar from "./components/Navbar";
 import Trending from "./components/Trending";
@@ -50,9 +51,9 @@ function App() {
     <div>
       <Navbar setSearchText={setSearchText} onSearch={handleSearch}/>
       <Switch>
-          <Route path="/" exact>
-            <Home movies= {movies}/>
-          </Route>
+        <Route path="/" exact>
+          <Home movies= {movies}/>
+        </Route>
         <Route path="/trending" exact>
           <Trending movies={movies} isLoading={isLoading} fetchMoreMovies={fetchMoreMovies} page = {page} totalPages = {totalPages}/>
         </Route>

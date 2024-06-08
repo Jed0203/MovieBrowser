@@ -16,7 +16,7 @@ const Trending = ({movies, isLoading, fetchMoreMovies, page, totalPages}) => {
   
   return (
     <>
-      <Hero text="Trending" />
+      <Hero text="Now Playing" />
       <div className="bg-dark">
         <div className="row row-cols-1 row-cols-md-3 ms-5">
           {currentMovies.map((movie) => (
