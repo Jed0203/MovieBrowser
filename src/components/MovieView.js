@@ -8,6 +8,7 @@ const MovieView = () => {
   const location = useLocation();
   const { posterUrl, placeholderImage } = location.state || {};
   const { movieDetails, isLoading } = useFetchMovieDetails(id);
+  const votePercentage = Math.round(movieDetails.vote_average * 10);
 
   function renderMovieDetails() {
     if (isLoading) {
@@ -51,7 +52,7 @@ const MovieView = () => {
                   </div>
                   <div className="mt-4">
                     <span className="text-white-50">Average Rating:</span>{" "}
-                    {movieDetails?.vote_average}
+                    {votePercentage}%
                   </div>
                   <div className="mt-4">
                     <span className="text-white-50">Revenue:</span> $
