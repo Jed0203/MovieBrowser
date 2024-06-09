@@ -38,12 +38,21 @@
     z-index: 1; /* Ensure the overlay is in front of the backdrop */
 }
 
+.list-group-item {
+  background-image: linear-gradient(90deg, rgba(255, 0, 0, 0), #9a1d1d);
+  color: #fff; /* Ensure text color contrasts with the background */
+  border: none; /* Remove default border for a cleaner look */
+  margin: 0.5rem 0; /* Add some spacing between items */
+}
+
+
+
+
 .home-page {
     display: flex;
-    flex-direction: column;
     min-height: 100vh; /* Make sure the home-page takes up the full height */
     background-color: #000; /* Ensure the background color is applied */
-  }
+}
 
 .container {
     position: relative;
@@ -51,63 +60,65 @@
 }
 
 .custom-carousel {
-    position: relative;
-    max-width: 1000px; /* Adjust the max width as needed */
-    margin: 40px auto; /* Center the carousel and add spacing at the top */
-    background-color: #fff;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  }
-  
-  .custom-carousel-img {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-  
-  .carousel-caption {
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 80%;
-    color: #fff;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transition for transform */
-    background-color: rgba(0, 0, 0, 0.6); /* Background color to enhance readability */
-    border-radius: 0.5rem;
-  }
-  
-  .carousel-item:hover .carousel-caption {
-    opacity: 1; /* Show the caption on hover */
-    transform: translate(-50%, -40%); /* Adjust transform to slide up */
-  }
-  
-  .carousel-item {
-    position: flex;
-    overflow: hidden; /* Ensure content doesn't overflow */
-  }
-  
-  .carousel-item::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: background 0.3s ease-in-out;
-    z-index: 1;
-  }
-  
-  
-  .carousel-caption h5, .carousel-caption p {
-    margin: 0;
-  }
+  position: relative;
+  width: 100%; /* Adjust the max width as needed */
+  max-height: 100vh;
+  background-color: #fff;
+}
 
-  .carousel-caption .btn {
-    margin-top: 10px; /* Add some space above the button */
-  }
+.custom-carousel-img {
+  width: 100%;
+  height: auto;
+  max-height: 100vh; /* Ensure the image does not exceed the carousel height */
+  object-fit: cover; /* Cover the entire area without stretching */
+  object-position: top;
+}
 
-  .badge {
-    font-size: 1rem;
-    padding: 10px;
-    border-radius: 0.5rem;
-  }
+  
+.carousel-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(transparent, #000);
+  display: flex;
+  padding: 20px;
+}
+
+.carousel-caption {
+  width: 100%;
+  color: #fff;
+}
+
+.carousel-caption .carousel-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: .4rem;
+  text-align: left;
+}
+
+.carousel-caption .carousel-subtitle {
+  display: flex;
+  font-size: 2rem;
+  gap: 30px;
+  margin-bottom: 1rem;
+}
+
+.carousel-caption .carousel-overview {
+  display: flex;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: .25rem;
+  text-align: left;
+  width: 50%;
+}
+
+
+
+.badge {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 0.5rem;
+}
+

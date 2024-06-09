@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 const Slideshow = ({ movies }) => {
   const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
 
+  const getFirstWords = (text, wordCount) => {
+    const words = text.split(' ');
+    return words.length > wordCount ? `${words.slice(0, wordCount).join(' ')}...` : text;
+  };
+
+
 
   return (
     <div id="carouselExampleAutoplaying" className="carousel slide custom-carousel" data-bs-ride="carousel">
@@ -12,24 +18,25 @@ const Slideshow = ({ movies }) => {
         {movies.map((movie, index) => {
           const posterUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : placeholderImage;
           const detailUrl = `/movies/${movie.id}`
+          const voteScore = Math.round(movie.vote_average);
           return (
-            <div key={`${movie.id}-${index}`} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                    <img
-                        src={posterUrl}
-                        className="d-block w-100 custom-carousel-img"
-                        alt={movie.title}
-                    />
+            <Link to={detailUrl} key={`${movie.id}-${index}`} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                  
+              <img
+                  src={posterUrl}
+                  className=" custom-carousel-img"
+                  alt={movie.title}
+              />       
+              <div className="carousel-caption-overlay">
+                <div className="carousel-caption">
+ 
+                  <h1 className="carousel-title">{movie.title}</h1>
+                  <p className="carousel-subtitle">Release Date: {movie.release_date} | Rating: {voteScore}/10</p>
+                  <p className="carousel-overview">{getFirstWords(movie.overview, 15)}</p>
+                </div>
+              </div>
 
-                        
-                    <div className="carousel-caption position-absolute top-50 start-50 translate-middle fs-4">
-                        <h5>{movie.title}</h5>
-                        <p>{movie.overview}</p>
-                        <Link to={detailUrl} className="btn btn-primary">
-                            More Details
-                        </Link>
-                    </div>
-
-            </div>
+            </Link>
           );
         })}
       </div>

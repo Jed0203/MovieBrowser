@@ -6,7 +6,7 @@ import useFetchMovieDetails from "../hooks/useFetchMoviesDetail";
 const MovieView = () => {
   const { id } = useParams();
   const location = useLocation();
-  const { posterUrl, placeholderImage } = location.state || {};
+  const { placeholderImage } = location.state || {};
   const { movieDetails, isLoading } = useFetchMovieDetails(id);
   const votePercentage = Math.round(movieDetails.vote_average * 10);
 
@@ -16,6 +16,7 @@ const MovieView = () => {
     }
     if (movieDetails) {
       //const posterPath = passedPosterUrl || placeholderImage;
+      const posterUrl = movieDetails.poster_path ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}` : placeholderImage;
       const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`
       return (
         <>

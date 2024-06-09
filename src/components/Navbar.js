@@ -54,7 +54,7 @@ const Navbar = ({ setSearchText, onSearch }) => {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/about">
-                About
+                Top_Rated
               </Link>
             </li>
             <li className="nav-item">

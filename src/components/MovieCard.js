@@ -5,12 +5,13 @@ const MovieCard = ({ movie }) => {
   const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
   const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : placeholderImage;
   const detailUrl = `/movies/${movie.id}`
+  console.log(detailUrl);
 
   const getBadgeColor = (rating) => {
     if (rating >= 7) {
       return 'bg-success';
     } else if (rating >= 6) {
-      return 'bg-warning';
+      return 'bg-warning text-dark';
     } else {
       return 'bg-danger';
     }
