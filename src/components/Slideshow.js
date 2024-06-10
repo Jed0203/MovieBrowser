@@ -13,7 +13,7 @@ const Slideshow = ({ movies }) => {
 
 
   return (
-    <div id="carouselExampleAutoplaying" className="carousel slide custom-carousel" data-bs-ride="carousel">
+    <div id="carouselExampleAutoplaying" className="carousel slide custom-carousel carousel-fade" data-bs-ride="carousel">
       <div className="carousel-inner">
         {movies.map((movie, index) => {
           const posterUrl = movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : placeholderImage;

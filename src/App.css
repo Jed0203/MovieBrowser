@@ -102,14 +102,14 @@
   display: flex;
   font-size: 2rem;
   gap: 30px;
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
 }
 
 .carousel-caption .carousel-overview {
   display: flex;
   font-size: 1rem;
   font-style: italic;
-  margin-bottom: .25rem;
+  margin-bottom: 8rem;
   text-align: left;
   width: 50%;
 }
@@ -122,3 +122,190 @@
   border-radius: 0.5rem;
 }
 
+/* MovieView.css */
+
+.poster-container {
+  position: relative;
+}
+
+.img-fluid.shadow.rounded {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-fluid.shadow.rounded:hover {
+  transform: scale(1.05); /* Scale up the image */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Add a larger shadow */
+}
+
+.button.play-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0; /* Initially hidden */
+}
+
+.poster-container:hover .button.play-video {
+  opacity: 1; /* Show the button on hover */
+  transform: translate(-50%, -50%) scale(1.1); /* Scale up the button slightly */
+}
+
+.trailer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.trailer-content {
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+
+.youtube.amru {
+  width: 80%;
+  height: 80%;
+}
+
+.youtube-container.amru {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.youtube-container.amru iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-close {
+  position: absolute;
+  top: 70px;
+  right: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button.close-video:hover {
+  background-color: rgba(0, 0, 0, 1); /* Darken on hover */
+}
+
+/* Container for the Recommendation Carousel */
+.rec_carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+
+/* Recommendation Card */
+.recommendation-card {
+  width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+
+}
+
+.recommendation-card img {
+  width: 100%;
+  height: auto;
+  float: left;
+}
+
+.recommendation-card .card-body {
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.recommendation-card:hover .card-body {
+  transform: translateY(0);
+}
+
+.recommendation-card .card-title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.recommendation-card .card-text {
+  font-size: 0.875rem;
+  color: #ccc;
+}
+
+
+.recommendation-card .rating {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.rec-carousel-controls {
+  position: relative;
+}
+
+.rec-carousel-control-prev,
+.rec-carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 20px; /* Increase the padding for larger controls */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 1.5rem; /* Increase the font size for larger controls */
+}
+
+.rec-carousel-control-prev {
+  left: 40px; /* Adjust the distance from the left side */
+}
+
+.rec-carousel-control-next {
+  right: 40px; /* Adjust the distance from the right side */
+}
+
+.rec-carousel-control-prev:disabled,
+.rec-carousel-control-next:disabled {
+  cursor: not-allowed;
+}
