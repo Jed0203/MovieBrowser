@@ -1,6 +1,6 @@
 # Movie Browser
 
-### What is in the React 201 online course?
+### What is in the Movie Browser project?
 I applied what I learn from React in this web app:
 * Functional components
 * React state
