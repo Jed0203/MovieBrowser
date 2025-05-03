@@ -1,3 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; /* Helps ensure percentage heights work correctly if needed */
+}
+
 .hero-container {
     position: relative;
     z-index: 100;
@@ -19,49 +26,20 @@
 }
 
 
-.movie-view-container {
-    position: relative;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center center;
-    padding-top: 56px; /* Adjust this value if your navbar height changes */
-}
-
-.movie-view-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-    z-index: 1; /* Ensure the overlay is in front of the backdrop */
-}
-
-.list-group-item {
-  background-image: linear-gradient(90deg, rgba(255, 0, 0, 0), #9a1d1d);
-  color: #fff; /* Ensure text color contrasts with the background */
-  border: none; /* Remove default border for a cleaner look */
-  margin: 0.5rem 0; /* Add some spacing between items */
-}
-
-
-
-
 .home-page {
     display: flex;
-    min-height: 100vh; /* Make sure the home-page takes up the full height */
-    background-color: #000; /* Ensure the background color is applied */
+    min-height: 100vh;
+    background-color: #000;
 }
 
 .container {
     position: relative;
-    z-index: 2; /* Ensure the content is in front of the overlay */
+    z-index: 2; 
 }
 
 .custom-carousel {
   position: relative;
-  width: 100%; /* Adjust the max width as needed */
+  width: 100%;
   max-height: 100vh;
   background-color: #fff;
 }
@@ -69,8 +47,8 @@
 .custom-carousel-img {
   width: 100%;
   height: auto;
-  max-height: 100vh; /* Ensure the image does not exceed the carousel height */
-  object-fit: cover; /* Cover the entire area without stretching */
+  max-height: 100vh;
+  object-fit: cover;
   object-position: top;
 }
 
@@ -124,6 +102,31 @@
 
 /* MovieView.css */
 
+.movie-view-container {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  padding-top: 56px;
+}
+
+.movie-view-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.list-group-item {
+background-image: linear-gradient(90deg, rgba(255, 0, 0, 0), #9a1d1d);
+border: none;
+margin: 0.5rem 0;
+}
+
 .poster-container {
   position: relative;
 }
@@ -133,8 +136,8 @@
 }
 
 .img-fluid.shadow.rounded:hover {
-  transform: scale(1.05); /* Scale up the image */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Add a larger shadow */
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .button.play-video {
@@ -149,12 +152,12 @@
   cursor: pointer;
   border-radius: 5px;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  opacity: 0; /* Initially hidden */
+  opacity: 0; 
 }
 
 .poster-container:hover .button.play-video {
-  opacity: 1; /* Show the button on hover */
-  transform: translate(-50%, -50%) scale(1.1); /* Scale up the button slightly */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1); 
 }
 
 .trailer-overlay {
@@ -210,7 +213,7 @@
 }
 
 .button.close-video:hover {
-  background-color: rgba(0, 0, 0, 1); /* Darken on hover */
+  background-color: rgba(0, 0, 0, 1);
 }
 
 /* Container for the Recommendation Carousel */
@@ -221,7 +224,7 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px;
 }
 
 
@@ -291,18 +294,18 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 20px; /* Increase the padding for larger controls */
+  padding: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  font-size: 1.5rem; /* Increase the font size for larger controls */
+  font-size: 1.5rem;
 }
 
 .rec-carousel-control-prev {
-  left: 40px; /* Adjust the distance from the left side */
+  left: 40px; 
 }
 
 .rec-carousel-control-next {
-  right: 40px; /* Adjust the distance from the right side */
+  right: 40px;
 }
 
 .rec-carousel-control-prev:disabled,

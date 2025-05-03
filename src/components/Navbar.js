@@ -24,7 +24,7 @@ const Navbar = ({ setSearchText, onSearch }) => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light  sticky-top bg-opacity-75">
+    <nav className="navbar navbar-expand-lg bg-pink">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/" onClick={handleHomeClick}>
           Movie Browser
