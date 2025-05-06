@@ -24,7 +24,7 @@ const Navbar = ({ setSearchText, onSearch }) => {
 
 
   return (
-    <nav className="navbar navbar-expand-lg bg-pink">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/" onClick={handleHomeClick}>
           Movie Browser
@@ -50,21 +50,6 @@ const Navbar = ({ setSearchText, onSearch }) => {
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/trending" >
                 Now Playing
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                Top_Rated
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link disabled"
-                to="/"
-                tabIndex="-1"
-                aria-disabled="true"
-              >
-                Coming soon
               </Link>
             </li>
           </ul>
